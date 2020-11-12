@@ -31,7 +31,8 @@ for dep in \
   http://mirrors.kernel.org/ubuntu/pool/main/libg/libglvnd/libglvnd0_1.0.0-2ubuntu2_amd64.deb \
   http://mirrors.kernel.org/ubuntu/pool/main/libg/libglvnd/libglx0_1.0.0-2ubuntu2_amd64.deb \
   http://mirrors.kernel.org/ubuntu/pool/main/libx/libxcomposite/libxcomposite1_0.4.4-2_amd64.deb \
-  http://ftp.debian.org/debian/pool/main/n/nss/libnss3_3.58-1_amd64.deb
+  http://ftp.debian.org/debian/pool/main/n/nss/libnss3_3.58-1_amd64.deb \
+  http://ftp.debian.org/debian/pool/main/n/nspr/libnspr4_4.20-1_amd64.deb
 do
   echo $dep
   curl -OLs $dep
