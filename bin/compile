@@ -2,10 +2,10 @@
 # bin/compile <build-dir> <cache-dir>
 
 # fail fast
-#set -e
+set -e
 
 # debug
-set -x
+#set -x
 
 # parse and derive params
 BUILD_DIR=$1
@@ -26,7 +26,7 @@ unset PYTHONPATH
 unset PYTHONHOME
 
 #python2.7 -c "execfile(\"/tmp/linux-installer.py\"); main(install_dir=\"$BUILD_DIR\", ignore_umask=True)" > /dev/null 2>&1
-python3 -c "exec(open(\"/tmp/linux-installer.py\").read()); main(install_dir=\"$BUILD_DIR\", ignore_umask=True, version='5.44.0')"
+python3 -c "exec(open(\"/tmp/linux-installer.py\").read()); main(install_dir=\"$BUILD_DIR\", ignore_umask=True, version='5.44.0')" > /dev/null 2>&1
 
 # libGL dependency required for image processing
 echo "-----> Installing dependencies"
