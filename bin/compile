@@ -2,7 +2,10 @@
 # bin/compile <build-dir> <cache-dir>
 
 # fail fast
-set -e
+#set -e
+
+# debug
+set -x
 
 # parse and derive params
 BUILD_DIR=$1
@@ -22,7 +25,8 @@ echo "-----> Installing Calibre"
 unset PYTHONPATH
 unset PYTHONHOME
 
-python2.7 -c "execfile(\"/tmp/linux-installer.py\"); main(install_dir=\"$BUILD_DIR\", ignore_umask=True)" > /dev/null 2>&1
+#python2.7 -c "execfile(\"/tmp/linux-installer.py\"); main(install_dir=\"$BUILD_DIR\", ignore_umask=True)" > /dev/null 2>&1
+python3 -c "exec(open(\"/tmp/linux-installer.py\").read()); main(install_dir=\"$BUILD_DIR\", ignore_umask=True, version='5.44.0')"
 
 # libGL dependency required for image processing
 echo "-----> Installing dependencies"
@@ -41,7 +45,7 @@ do
   tar xf data.tar.xz
   rm *.deb
 done
-mv ./usr/lib/x86_64-linux-gnu/* $BUILD_DIR/calibre/lib/
+cp -r ./usr/lib/x86_64-linux-gnu/* $BUILD_DIR/calibre/lib/
 
 echo "-----> Setting up path"
 
